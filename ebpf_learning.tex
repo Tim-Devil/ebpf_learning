@@ -1,0 +1,32 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{ctex}
+\usepackage{graphicx}
+
+\title{Notes about ebpf learning}
+\author{Mayrain}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section{Introduction}
+主要是参照b站上的某个视频，看他们介绍ebpf的功能。\\
+ebpf是cbpf的后续。\\
+1. risc指令集：11个64位寄存器，以及一些指令集用于操控。我已经在图中标定。\\
+2. helpers函数。利用这个函数访问内核数据。（提供内核交互。）\\
+3. maps，一个全局变量数组。\\
+\\
+使用方式和概念\\
+4. object pinning，一个概念，利用特定工具和接口将程序或者map加载到内核中。一般适用于持久性使用。\\
+5. 尾调用优化，一种编译器优化技术，可以减少函数调用的开销。它的实现方式是，将函数调用的返回地址设置为被调用函数的返回地址。这样就可以避免在被调用函数返回后，再返回到调用函数的返回地址。这样就减少了一次函数调用的开销。\\
+\\
+6. jit: just in time，即时编译。一种编译方式，将源代码编译成机器码的过程放在运行时进行。这样可以减少编译时间，但是会增加运行时的开销。另外它还可以根据不同环境生成不同机器码，提升了泛用度。\\
+7. hardening: 保护bpf程序。\\
+\\
+> tcpdump：命令行的网络流量分析工具。一般用来抓TCP包。应该和wireshark类似。\\
+
+
+
+\end{document}
